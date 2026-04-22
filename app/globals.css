@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-2: #f1f5f9;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --primary: #6366f1;
+    --accent: #06b6d4;
+  }
+
+  .dark {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface-2: #1a1a28;
+    --text: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border: #2a2a3e;
+    --primary: #818cf8;
+    --accent: #22d3ee;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: #6366f130;
+    color: #818cf8;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #6366f150;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6366f1;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight;
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-subtitle {
+    @apply text-base sm:text-lg max-w-2xl mx-auto mb-12 leading-relaxed;
+    color: var(--text-muted);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    @apply rounded-2xl transition-all duration-300;
+  }
+
+  .card:hover {
+    border-color: var(--border);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white transition-all duration-200 text-sm;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    box-shadow: 0 4px 20px #6366f135;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 8px 24px #6366f130;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 text-sm;
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: transparent;
+  }
+
+  .btn-secondary:hover {
+    border-color: #6366f1;
+    color: #818cf8;
+    background: #6366f108;
+  }
+
+  .tag {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium;
+    background: #6366f115;
+    color: #818cf8;
+    border: 1px solid #6366f125;
+  }
+
+  .tag-accent {
+    background: #06b6d415;
+    color: #22d3ee;
+    border-color: #06b6d425;
+  }
+
+  .tag-green {
+    background: #10b98115;
+    color: #34d399;
+    border-color: #10b98125;
+  }
+
+  .metric-highlight {
+    @apply px-3 py-1.5 rounded-lg text-sm font-semibold;
+    background: linear-gradient(135deg, #6366f115, #06b6d415);
+    border: 1px solid #6366f130;
+    color: #818cf8;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: skyblue;
+    background-clip: text;
+  }
+
+  .glow-border {
+    box-shadow: 0 0 0 1px #6366f130, 0 0 30px #6366f115;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium transition-colors duration-200;
+    color: var(--text-muted);
+  }
+
+  .nav-link:hover {
+    color: #818cf8;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl text-sm outline-none transition-all duration-200;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .input-field:focus {
+    border-color: #6366f160;
+    box-shadow: 0 0 0 3px #6366f115;
+  }
+
+  .input-field::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+}
+
+/* Grid background pattern */
+.bg-grid {
+  background-image: radial-gradient(circle, #6366f118 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+  background: var(--surface);
+  border-radius: 1rem;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #6366f1, #06b6d4, #8b5cf6, #6366f1);
+  background-size: 300% 300%;
+  animation: gradient 5s ease infinite;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* Typewriter cursor */
+.typewriter-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: #818cf8;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Code block styling */
+.code-badge {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  @apply text-xs px-2 py-0.5 rounded;
+  background: #6366f112;
+  color: #818cf8;
+  border: 1px solid #6366f120;
+}
+
+/* Skill progress bar */
+.skill-bar {
+  @apply h-1.5 rounded-full overflow-hidden;
+  background: var(--border);
+}
+
+.skill-bar-fill {
+  @apply h-full rounded-full;
+  background: linear-gradient(90deg, #6366f1, #06b6d4);
+}
+
+/* Hero glow orbs */
+.glow-orb {
+  border-radius: 50%;
+  filter: blur(90px);
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Keyframe animations */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utility animations */
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2.5s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, #6366f120 50%, transparent 100%);
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Section separator */
+.section-divider {
+  @apply w-12 h-1 rounded-full mx-auto mb-6;
+  background: linear-gradient(90deg, #6366f1, #06b6d4);
+}
+
+/* Noise texture */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Timeline styles */
+.timeline-line {
+  @apply absolute left-4 top-8 bottom-0 w-px;
+  background: linear-gradient(to bottom, #6366f140, transparent);
+}
+
+/* Glowing text effect */
+.glow-text {
+  text-shadow: 0 0 20px #6366f160, 0 0 40px #6366f130;
+}
+
+/* Animated underline */
+.animated-underline {
+  @apply relative;
+}
+
+.animated-underline::after {
+  content: '';
+  @apply absolute bottom-0 left-0 h-px w-0 transition-all duration-300;
+  background: linear-gradient(90deg, #6366f1, #06b6d4);
+}
+
+.animated-underline:hover::after {
+  @apply w-full;
+}
